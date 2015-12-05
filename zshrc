@@ -64,3 +64,11 @@ function do_sudo
 alias nsudo='nocorrect sudo'
 alias lxc-ls='lxc-ls --fancy'
 alias ll='ls -alh --color=auto'
+unalias gb
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+export GOPATH=/home/lukasz/.go
+export PATH=$GOPATH/bin:$PATH
+export GOROOT=/data/bin/go
+export PATH=$GOROOT/bin:$PATH
+
+

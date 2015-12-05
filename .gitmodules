@@ -1,0 +1,6 @@
+[submodule "powerline"]
+	path = powerline
+	url = https://github.com/powerline/powerline.git
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/sorin-ionescu/prezto
