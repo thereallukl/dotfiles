@@ -9,7 +9,6 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
 # Customize to your needs...
 EDITOR=/usr/bin/vim
 VISUAL=/usr/bin/vim
@@ -23,9 +22,9 @@ fi
 
 export PATH=$PATH:/data/bin
 
-source /usr/local/bin/virtualenvwrapper.sh
-source /etc/zsh_command_not_found
-source /etc/docker_completion
+#source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
+#source /etc/zsh_command_not_found
+#source /etc/docker_completion
 
 lrc(){
     start=$(date +%s)
@@ -64,7 +63,7 @@ function do_sudo
 alias nsudo='nocorrect sudo'
 alias lxc-ls='lxc-ls --fancy'
 alias ll='ls -alh --color=auto'
-unalias gb
+#unalias gb
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GOPATH=/home/lukasz/.go
 export PATH=$GOPATH/bin:$PATH
