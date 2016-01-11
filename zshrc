@@ -22,7 +22,7 @@ fi
 
 export PATH=$PATH:/data/bin
 
-#source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
 #source /etc/zsh_command_not_found
 #source /etc/docker_completion
 
@@ -69,5 +69,6 @@ export GOPATH=/home/lukasz/.go
 export PATH=$GOPATH/bin:$PATH
 export GOROOT=/data/bin/go
 export PATH=$GOROOT/bin:$PATH
-
+export PATH=$HOME/.local/bin:$PATH
+export VAGRANT_HOME=$HOME/vagrant/.vagrant
 
