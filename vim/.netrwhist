@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/lukasz/.vim'
+let g:netrw_dirhist_2='/data/Projects/linux-stable'
+let g:netrw_dirhist_3='/data/Projects/linux-stable/net'
+let g:netrw_dirhist_4='/data/Projects/linux-stable/net/dcb'
+let g:netrw_dirhist_5='/data/Projects/linux-stable/net'
+let g:netrw_dirhist_6='/data/Projects/linux-stable'
+let g:netrw_dirhist_7='/data/Projects/linux-stable/include'
+let g:netrw_dirhist_8='/data/Projects/linux-stable/include/linux'
+let g:netrw_dirhist_9='/data/Projects/linux-stable/include/linux/dma'
