@@ -60,13 +60,18 @@ function do_sudo
 }
 
 
+
+bindkey "^R" history-incremental-search-backward
+
 alias nsudo='nocorrect sudo'
 alias lxc-ls='lxc-ls --fancy'
 alias ll='ls -alh --color=auto'
 #unalias gb
+export PATH=~/.local/bin:$PATH
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GOPATH=/home/lukasz/.go
 export PATH=$GOPATH/bin:$PATH
+export GOPATH=$GOPATH:/data/bin/go
 export GOROOT=/data/bin/go
 export PATH=$GOROOT/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
