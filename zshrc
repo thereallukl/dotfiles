@@ -69,11 +69,11 @@ alias ll='ls -alh --color=auto'
 #unalias gb
 export PATH=~/.local/bin:$PATH
 export VAGRANT_DEFAULT_PROVIDER=libvirt
-export GOPATH=/home/lukasz/.go
+export GOPATH=/home/lleszczu/.go
 export PATH=$GOPATH/bin:$PATH
 export GOPATH=$GOPATH:/data/bin/go
 export GOROOT=/data/bin/go
 export PATH=$GOROOT/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/go/bin:$PATH
 export VAGRANT_HOME=$HOME/vagrant/.vagrant
 
