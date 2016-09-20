@@ -12,6 +12,7 @@ fi
 # Customize to your needs...
 EDITOR=/usr/bin/vim
 VISUAL=/usr/bin/vim
+alias rsync_git="rsync -avz --exclude '*.git'"
 export EDITOR
 export VISUAL
 if [[ ! -n $TMUX ]];then
@@ -24,7 +25,12 @@ export PATH=$PATH:/data/bin
 
 source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
 source /etc/zsh_command_not_found
-#source /etc/docker_completion
+export PATH=$PATH:/data/bin:$HOME/bin
+if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
+  source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
+else
+  source /usr/bin/virtualenvwrapper.sh
+fi
 
 lrc(){
     start=$(date +%s)
@@ -62,6 +68,8 @@ function do_sudo
 
 
 bindkey "^R" history-incremental-search-backward
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 alias nsudo='nocorrect sudo'
 alias lxc-ls='lxc-ls --fancy'
