@@ -65,11 +65,17 @@ function do_sudo
 	fi
 }
 
+my-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+        zle backward-delete-word
+}
+zle -N my-backward-delete-word
 
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+bindkey '^W' my-backward-delete-word
 
 alias nsudo='nocorrect sudo'
 alias lxc-ls='lxc-ls --fancy'
