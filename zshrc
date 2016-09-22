@@ -23,8 +23,14 @@ fi
 
 export PATH=$PATH:/data/bin
 
-source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
-source /etc/zsh_command_not_found
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh 
+elif [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
+  source /usr/bin/virtualenvwrapper.sh
+fi
+if [[ -f /etc/zsh_command_not_found ]]; then
+  source /etc/zsh_command_not_found
+fi
 export PATH=$PATH:/data/bin:$HOME/bin
 if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
   source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
