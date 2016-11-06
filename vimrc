@@ -70,3 +70,11 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
+
+
+" vim airline configuration
+" show bufferlist
+let g:airline#extensions#tabline#enabled = 1
+" show filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
