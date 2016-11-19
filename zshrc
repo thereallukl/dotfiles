@@ -29,6 +29,9 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
 elif [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
   source /usr/bin/virtualenvwrapper.sh
 fi
+if [[ -f ~/.openrc ]]; then
+    source ~/.openrc
+fi
 if [[ -f /etc/zsh_command_not_found ]]; then
   source /etc/zsh_command_not_found
 fi
