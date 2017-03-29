@@ -46,3 +46,6 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/jlanzarotta/bufexplorer.git

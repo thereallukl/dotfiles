@@ -14,7 +14,7 @@ EDITOR=/usr/bin/vim
 VISUAL=/usr/bin/vim
 alias rsync_git="rsync -avz --exclude '*.git'"
 alias grep="grep --color=always"
-alias gitk="nohup gitk & disown"
+alias gitk="gitk & disown"
 export EDITOR
 export VISUAL
 if [[ ! -n $TMUX ]];then

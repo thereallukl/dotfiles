@@ -70,6 +70,9 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
+" show overlenght
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 
 " vim airline configuration
@@ -78,3 +81,9 @@ let g:airline#extensions#tabline#enabled = 1
 " show filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+"Working with buffers
+set hidden
+nnoremap bn :bnext<CR>
+nnoremap bp :bprev<CR>
+nnoremap bd :bdelete<CR>
+nnoremap bl :BufExplorer<CR>
