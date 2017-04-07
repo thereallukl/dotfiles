@@ -25,6 +25,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1  
 let g:go_highlight_build_constraints = 1
 let g:neocomplete#enable_at_startup = 1
+" setlocal omnifunc=go#complete#Complete
 " colorscheme molokai
 
 " automatically add current dir to gopath
@@ -72,7 +73,7 @@ let g:tagbar_type_go = {
 
 " show overlenght
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+au FileType python match OverLength /\%81v.\+/
 
 
 " vim airline configuration
