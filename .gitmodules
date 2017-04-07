@@ -46,3 +46,6 @@
 [submodule "bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule "supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
