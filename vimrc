@@ -28,6 +28,11 @@ let g:neocomplete#enable_at_startup = 1
 " setlocal omnifunc=go#complete#Complete
 " colorscheme molokai
 
+" cptrl+p disable dirs
+let g:ctrlp_custom_ignore = '\.(git|hg|svn),vendor'
+" set ctags binary to gnu version
+let g:tagbar_ctag_bin = '/usr/local/bin/ctags'
+
 " automatically add current dir to gopath
 if !empty(glob("src"))
     let $GOPATH=getcwd()
@@ -88,3 +93,5 @@ nnoremap bn :bnext<CR>
 nnoremap bp :bprev<CR>
 nnoremap bd :bdelete<CR>
 nnoremap bl :BufExplorer<CR>
+
+au BufNewFile,BufRead *jenkinsfile* setf groovy
