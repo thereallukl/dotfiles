@@ -9,9 +9,7 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-source ~/.zsh/kubernetes
 autoload -U colors; colors
-RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 # Customize to your needs...
 export EDITOR=/usr/local/bin/vim
 export VISUAL=/usr/local/bin/vim
@@ -37,13 +35,7 @@ fi
 if [[ -f /etc/zsh_command_not_found ]]; then
   source /etc/zsh_command_not_found
 fi
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 export PATH=$PATH:/data/bin:$HOME/bin
-if [[ -e /usr/local/bin/virtualenvwrapper.sh ]]; then
-  source /usr/local/bin/virtualenvwrapper.sh || source /usr/bin/virtualenvwrapper.sh
-else
-  source /usr/bin/virtualenvwrapper.sh
-fi
 
 lrc(){
     start=$(date +%s)
@@ -105,31 +97,3 @@ export PATH=$HOME/.local/bin:$PATH
 # search brew packages first
 #
 PATH=/usr/local/bin:$PATH
-if [ $(uname) != "Darwin" ]; then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-    if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-        source /usr/local/bin/virtualenvwrapper.sh 
-    elif [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
-      source /usr/bin/virtualenvwrapper.sh
-    fi
-else
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
-    export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-    export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-fi
-source ~/.helm_completion
-source ~/.kubectl_completion
-
-function getToken
-{
-  secret=$(kubectl get secret | grep --color=never $1| cut -f1 -d" ")
-  # echo $secret
-  token=$(kubectl get secret $secret -o yaml | yq .data.token 2>/dev/null | tr -d '"' | base64 -D)
-  echo $token
-}
-
-
-alias kctl='kubectl -n kube-system'
-alias kovt='kubectl -n medialon-ovt'
-alias king='kubectl -n ingress-nginx'
-alias knex='kubectl -n nexxis'
