@@ -18,8 +18,8 @@ alias grep="grep --color=always"
 alias gitk="gitk & disown"
 
 # do not share history across tmux panes
-setopt noincappendhistory
-setopt nosharehistory
+#setopt noincappendhistory
+#setopt nosharehistory
 
 if [[ ! -n $TMUX ]];then
 	export TERM=xterm-256color
@@ -78,8 +78,8 @@ zle -N my-backward-delete-word
 
 
 bindkey "^R" history-incremental-search-backward
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
+bindkey "^[b" forward-word
+bindkey "^[f" backward-word
 bindkey '^W' my-backward-delete-word
 
 alias nsudo='nocorrect sudo'
@@ -89,7 +89,7 @@ alias ll='ls -alh -G'
 export PATH=~/.local/bin:$PATH
 #export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export GOROOT=/data/bin/go
-#export GOPATH=/home/lukasz/.go
+export GOPATH=/home/lukasz/go
 #export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 #export VAGRANT_HOME=$HOME/vagrant/.vagrant
@@ -97,3 +97,14 @@ export PATH=$HOME/.local/bin:$PATH
 # search brew packages first
 #
 PATH=/usr/local/bin:$PATH
+
+alias kctl='kubectl -n kube-system'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/lukasz.leszczuk/.sdkman"
+[[ -s "/Users/lukasz.leszczuk/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/lukasz.leszczuk/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
