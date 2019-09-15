@@ -11,21 +11,23 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 autoload -U colors; colors
 # Customize to your needs...
-export EDITOR=/usr/local/bin/vim
-export VISUAL=/usr/local/bin/vim
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export EDITOR=/usr/local/bin/vim
+    export VISUAL=/usr/local/bin/vim
+fi
 alias rsync_git="rsync -avz --exclude '*.git'"
 alias grep="grep --color=always"
 alias gitk="gitk & disown"
-
+alias tmux="tmux -u"
 # do not share history across tmux panes
 #setopt noincappendhistory
 #setopt nosharehistory
 
-if [[ ! -n $TMUX ]];then
-	export TERM=xterm-256color
-else
-	export TERM=screen-256color
-fi
+#if [[ ! -n $TMUX ]];then
+#	export TERM=xterm-256color
+#else
+#	export TERM=screen-256color
+#fi
 
 export PATH=$PATH:/data/bin
 
@@ -76,6 +78,11 @@ my-backward-delete-word() {
 }
 zle -N my-backward-delete-word
 
+# fix home / end keys
+if [[ $OSTYPE == "darwin"* ]]; then
+    bindkey "^[[H" beginning-of-line
+    bindkey "^[[F" end-of-line
+fi
 
 bindkey "^R" history-incremental-search-backward
 bindkey "^[b" forward-word
@@ -108,3 +115,5 @@ export SDKMAN_DIR="/Users/lukasz.leszczuk/.sdkman"
 [[ -s "/Users/lukasz.leszczuk/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/lukasz.leszczuk/.sdkman/bin/sdkman-init.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -s "/Users/lukasz.leszczuk/.gvm/scripts/gvm" ]] && source "/Users/lukasz.leszczuk/.gvm/scripts/gvm"
