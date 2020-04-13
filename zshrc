@@ -15,6 +15,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export EDITOR=/usr/local/bin/vim
     export VISUAL=/usr/local/bin/vim
 fi
+if [[ "$OSTYPE" == "linux"* ]]; then
+    export EDITOR=/usr/bin/vim
+    export VISUAL=/usr/bin/vim
+fi
+
 alias rsync_git="rsync -avz --exclude '*.git'"
 alias grep="grep --color=always"
 alias gitk="gitk & disown"
