@@ -11,10 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 autoload -U colors; colors
 # Customize to your needs...
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export EDITOR=/usr/local/bin/vim
-    export VISUAL=/usr/local/bin/vim
-fi
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#     export EDITOR=/usr/local/bin/vim
+#     export VISUAL=/usr/local/bin/vim
+# fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     export EDITOR=/usr/bin/vim
     export VISUAL=/usr/bin/vim
@@ -34,7 +34,11 @@ alias tmux="tmux -u"
 #	export TERM=screen-256color
 #fi
 
-export PATH=$PATH:/data/bin
+export pATH=$PATH:/data/bin
+export PATH="$PATH:/Users/llesz/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
+export PATH="$HOME/bin:$PATH"
+
 
 if [[ -f ~/.openrc ]]; then
     source ~/.openrc
@@ -90,8 +94,8 @@ if [[ $OSTYPE == "darwin"* ]]; then
 fi
 
 bindkey "^R" history-incremental-search-backward
-bindkey "^[b" forward-word
-bindkey "^[f" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 bindkey '^W' my-backward-delete-word
 
 alias nsudo='nocorrect sudo'
@@ -101,7 +105,7 @@ alias ll='ls -alh -G'
 export PATH=~/.local/bin:$PATH
 #export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export GOROOT=/data/bin/go
-export GOPATH=/home/lukasz/go
+export GOPATH=~/.go
 #export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 #export VAGRANT_HOME=$HOME/vagrant/.vagrant
@@ -122,3 +126,27 @@ export SDKMAN_DIR="/Users/lukasz.leszczuk/.sdkman"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -s "/Users/lukasz.leszczuk/.gvm/scripts/gvm" ]] && source "/Users/lukasz.leszczuk/.gvm/scripts/gvm"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/llesz/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# jwt
+decode_base64_url() {
+  local len=$((${#1} % 4))
+  local result="$1"
+  if [ $len -eq 2 ]; then result="$1"'=='
+  elif [ $len -eq 3 ]; then result="$1"'=' 
+  fi
+  echo "$result" | tr '_-' '/+' | openssl enc -d -base64
+}
+
+decode_jwt(){
+   decode_base64_url $(echo -n $2 | cut -d "." -f $1) | jq .
+}
+
+# Decode JWT header
+alias jwth="decode_jwt 1"
+
+# Decode JWT Payload
+alias jwtp="decode_jwt 2"
