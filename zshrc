@@ -115,6 +115,14 @@ export PATH=$HOME/.local/bin:$PATH
 PATH=/usr/local/bin:$PATH
 
 alias kctl='kubectl -n kube-system'
+kubectl () {
+    command kubectl $*
+    if [[ -z $KUBECTL_COMPLETE ]]
+    then
+        source <(command kubectl completion zsh)
+        KUBECTL_COMPLETE=1 
+    fi
+}
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
